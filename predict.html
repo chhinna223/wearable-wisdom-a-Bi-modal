@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='img.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: rgba(0, 0, 0, 0.5); /* Ensures contrast for content */
+        }
+        h1 {
+            font-size: 34px;
+            margin: 20px 0;
+            color: black;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+            color: black; /* Form text color */
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            color: rgb(20, 20, 20);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Optimization of Wearable Biosensor Data for Stress Classification Using Machine Learning</h1>
+        <div class="form-container">
+            <h2>Make a Prediction</h2>
+            <form method="POST">
+                <input type="number" name="ID" placeholder="ID" required><br>
+                <input type="number" name="Timestamp" placeholder="Timestamp" required><br>
+                <input type="number" name="ACC_x" placeholder="ACC_x" required><br>
+                <input type="number" name="ACC_y" placeholder="ACC_y" required><br>
+                <input type="number" name="ACC_z" placeholder="ACC_z" required><br>
+                <input type="number" name="BVP" placeholder="BVP" required><br>
+                <input type="number" name="EDA" placeholder="EDA" required><br>
+                <input type="number" name="HR" placeholder="HR" required><br>
+                <input type="number" name="IBI_d" placeholder="IBI_d" required><br>
+                <input type="number" name="TEMP" placeholder="TEMP" required><br>
+                
+                <button type="submit">Predict</button>
+            </form>
+            {% if prediction_text %}
+                <p><strong>{{ prediction_text }}</strong></p>
+            {% endif %}
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
